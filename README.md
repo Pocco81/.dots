@@ -1,9 +1,9 @@
 <p align="center">
-  <h2 align="center">~/.dots</h2>
+  <h2 align="center">🍙 ~/.dots</h2>
 </p>
 
 <p align="center">
-	Because there is no place like `~`
+	Because there is no place like <code>~</code>
 </p>
 
 <p align="center">
