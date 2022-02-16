@@ -41,7 +41,13 @@ Most of my system's settings can be found in the [config.yaml](https://github.co
 
 > 👷🛑 Under main
 
-1. Install [dotdrop](https://github.com/deadc0de6/dotdrop)
+1. Clone this repo:
+```bash
+git clone git@github.com:Pocco81/.dots.git $HOME/.dots/
+cd $HOME/.dots
+```
+
+2. Install [dotdrop](https://github.com/deadc0de6/dotdrop)
 
 ## Gallery
 
