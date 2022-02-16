@@ -1,10 +1,10 @@
-<h3 align="center">
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/logos/repo.png" width="100" alt="Repo logo"/><br/>
-</h3>
+<p align="center">
+  <h2 align="center">~/.dots</h2>
+</p>
 
-<h2 align="center">
-	~/.dots
-</h2>
+<p align="center">
+	Because there is no place like `~`
+</p>
 
 <p align="center">
 	<a href="https://github.com/Pocco81/.dots/stargazers">
@@ -13,12 +13,6 @@
 		<img alt="Issues" src="https://img.shields.io/github/issues/Pocco81/.dots?style=for-the-badge&logo=gitbook&color=B5E8E0&logoColor=D9E0EE&labelColor=302D41"></a>
 	<a href="https://github.com/Pocco81/.dots">
 		<img alt="Repo Size" src="https://img.shields.io/github/repo-size/Pocco81/.dots?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&labelColor=302D41"/></a>
-</p>
-
-&nbsp;
-
-<p align="center">
-	Because there is no place like `~`
 </p>
 
 ## Thanks for dropping by!
