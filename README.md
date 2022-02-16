@@ -1,7 +1,10 @@
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/logos/repo.png" width="100" alt="Repo logo"/><br/>
-	~/.dots
 </h3>
+
+<h2 align="center">
+	~/.dots
+</h2>
 
 <p align="center">
 	<a href="https://github.com/Pocco81/.dots/stargazers">
