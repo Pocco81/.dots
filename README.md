@@ -10,7 +10,7 @@
 	<a href="https://github.com/Pocco81/.dots/stargazers">
 		<img alt="Stars" src="https://img.shields.io/github/stars/Pocco81/.dots?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
 	<a href="https://github.com/Pocco81/.dots/issues">
-		<img alt="Issues" src="https://img.shields.io/github/issues/Pocco81/.dots?style=for-the-badge&logo=gitbook&color=B5E8E0&logoColor=D9E0EE&labelColor=302D41"></a>
+		<img alt="Issues" src="https://img.shields.io/github/issues/Pocco81/.dots?style=for-the-badge&logo=gitbook&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41"></a>
 	<a href="https://github.com/Pocco81/.dots">
 		<img alt="Repo Size" src="https://img.shields.io/github/repo-size/Pocco81/.dots?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&labelColor=302D41"/></a>
 </p>
