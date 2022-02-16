@@ -28,10 +28,10 @@ Here are some details about my setup:
 + **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
 + **Shell**: [BASH](https://github.com/bminor/bash)
 + **Editor**: [Neovim](https://github.com/neovim/neovim/)
-+ **Browser**: [Brave Nightly](https://brave.com/)
++ **Browser**: [FireFox](https://www.mozilla.org/en-US/firefox/new/?redirect_source=firefox-com)
++ **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 + **Terminal**: [Kitty](https://github.com/kovidgoyal/kitty)
 + **Term Prompt**: [MiniPrompt](https://github.com/Pocco81/MiniPrompt)
-+ **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 
 ## Configuration
 
