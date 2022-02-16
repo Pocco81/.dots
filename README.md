@@ -15,6 +15,8 @@
 		<img alt="Repo Size" src="https://img.shields.io/github/repo-size/Pocco81/.dots?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&labelColor=302D41"/></a>
 </p>
 
+&nbsp;
+
 ## Thanks for dropping by!
 
 This is my personal collection of configuration files managed by [dotdrop](https://github.com/deadc0de6/dotdrop).
