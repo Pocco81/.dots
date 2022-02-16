@@ -1,8 +1,6 @@
 <h3 align="center">
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/logos/repo.png" width="100" alt="Logo"/><br/>
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/misc/transparent.png" height="30" width="0px"/>
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/logos/repo.png" width="100" alt="Repo logo"/><br/>
 	~/.dots
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
