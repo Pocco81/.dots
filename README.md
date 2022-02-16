@@ -1,10 +1,26 @@
-# ~/.dots
+<h3 align="center">
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/dev/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/dev/assets/misc/transparent.png" height="30" width="0px"/>
+	~/.dots
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/dev/assets/misc/transparent.png" height="30" width="0px"/>
+</h3>
 
-Because there is no place like `~`
+<p align="center">
+	<a href="https://github.com/Pocco81/.dots/stargazers">
+		<img alt="Stars" src="https://img.shields.io/github/stars/Pocco81/.dots?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
+	<a href="https://github.com/Pocco81/.dots/issues">
+		<img alt="Issues" src="https://img.shields.io/github/issues/Pocco81/.dots?style=for-the-badge&logo=gitbook&color=B5E8E0&logoColor=D9E0EE&labelColor=302D41"></a>
+	<a href="https://github.com/Pocco81/.dots">
+		<img alt="Repo Size" src="https://img.shields.io/github/repo-size/Pocco81/.dots?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&labelColor=302D41"/></a>
+</p>
+
+&nbsp;
+
+<p align="center">
+	Because there is no place like `~`
+</p>
 
 ## Thanks for dropping by!
-
-<img src="https://raw.githubusercontent.com/Pocco81/TheSupercalifragilisticexpialidociousDots/dev/resources/imgs/gnome_nvim.png" alt="img" align="right" width="300px">
 
 This is my personal collection of configuration files managed by [dotdrop](https://github.com/deadc0de6/dotdrop).
 
@@ -27,6 +43,8 @@ Most of my system's settings can be found in the [config.yaml](https://github.co
 ## Installation
 
 > 👷🛑 Under dev
+
+1. Install [dotdrop](https://github.com/deadc0de6/dotdrop)
 
 ## Gallery
 
