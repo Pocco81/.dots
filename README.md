@@ -33,13 +33,13 @@ Here are some details about my setup:
 + **Terminal**: [Kitty](https://github.com/kovidgoyal/kitty)
 + **Term Prompt**: [MiniPrompt](https://github.com/Pocco81/MiniPrompt)
 
-## Configuration
+## 📄 Configuration
 
 Most of my system's settings can be found in the [config.yaml](https://github.com/Pocco81/.dots/blob/main/config.yaml) under this repo's root.
 
-## Installation
+## 🚀 Installation
 
-> 👷🛑 Under main
+> 👷🛑 Under dev
 
 1. Clone this repo:
 ```bash
@@ -49,6 +49,6 @@ cd $HOME/.dots
 
 2. Install [dotdrop](https://github.com/deadc0de6/dotdrop)
 
-## Gallery
+## 🖼️ Gallery
 
-> 👷🛑 Under main
+> 👷🛑 Under dev
