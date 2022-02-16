@@ -1,8 +1,8 @@
 <h3 align="center">
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/dev/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/dev/assets/misc/transparent.png" height="30" width="0px"/>
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/misc/transparent.png" height="30" width="0px"/>
 	~/.dots
-	<img src="https://raw.githubusercontent.com/Pocco81/.dots/dev/assets/misc/transparent.png" height="30" width="0px"/>
+	<img src="https://raw.githubusercontent.com/Pocco81/.dots/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
@@ -42,10 +42,10 @@ Most of my system's settings can be found in the [config.yaml](https://github.co
 
 ## Installation
 
-> 👷🛑 Under dev
+> 👷🛑 Under main
 
 1. Install [dotdrop](https://github.com/deadc0de6/dotdrop)
 
 ## Gallery
 
-> 👷🛑 Under dev
+> 👷🛑 Under main
