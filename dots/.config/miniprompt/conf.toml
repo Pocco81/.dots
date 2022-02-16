@@ -1,0 +1,29 @@
+# MiniPrompt's config file
+[behaviour]
+colored_exit_status = true			# prettify the exit status of the previous command
+dirtrim = 2			# trim the CWD to only show x number of dirs
+enhanced_autocompletion = true			# completion maps, tilde expansion, mark directories, ...
+enhanced_history_format = true			# better format for your shell history: [%Y-%m-%d %T]
+dircolors = true			# color directories
+
+[primary_prompt]
+prefix = "\[\e]0;\w\a\]"			# prompt prefix
+ps_content = "</magenta_it>\w</nc> "			# the actual content of your prompt
+ps_suffix = "</green>➜</nc> "		# after the ps_content
+normal_color = "nc"			# the color text is defaulted to
+error_symbol = "✗"			# symbol to use after the previous command failed
+failed = "red"			# $error_mark's color after the previous command executed successfully
+
+[extensions]
+ext_git = false			# enable git extension (shows current working branch)
+ext_ssh = false			# enable ssh expansion (shows <user>@<machine>)
+ext_package = false			# enable package expansion (shows project's current version)
+ext_kubernetes = false			# enable kubernetes extension (shows kubernetes' current context)
+ext_ip = false			# enable kubernetes extension (shows kubernetes' current context)
+ext_wifi = false
+git_struct = "</cyan> </unit> "		# structure of the integration
+ssh_struct = "</magenta> </unit> " # structure of the integration
+package_struct = "</white> v</unit> " # structure of the integration
+ip_struct = "</gray_br>  </unit> " # structure of the integration
+wifi_struct = "</blue>直 </unit> " # structure of the integration
+hierarchy = "ssh, git, ip, wifi, package" # order in which the extensions are displayed

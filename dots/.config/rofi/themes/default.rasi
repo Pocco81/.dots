@@ -1,0 +1,135 @@
+* {
+  background-color: #16172095;
+  text-color: #e8eaef;
+  foreground:						#f8f8f8;
+  background:						#111111aa;
+  foreground-alt:					#ffffff;
+  background-alt:					#232323aa;
+  active-background:				#AB3952;
+  urgent-background:				#9baec8aa;
+  selected-background:			    @active-background;
+  selected-urgent-background:		@urgent-background;
+  selected-active-background:		@active-background;
+  separatorcolor:					@active-background;
+  bordercolor:					  	@active-background;
+}
+
+#window
+{
+	location:						center;
+	anchor:							center;
+	height:							100%;
+	width:							100%;
+	padding:						25.4%;
+	background-color:				@background-alt;
+	text-color:						@foreground-alt;
+	children:						[ mainbox ];
+}
+
+#mainbox
+{
+	background-color:				@background-alt;
+	text-color:						@foreground-alt;
+	expand:							true;
+	children:						[ inputbar, listview ];
+}
+
+#listview
+{
+	background-color:				@background-alt;
+	text-color:						@foreground-alt;
+    layout:							vertical;
+	dynamic:						true;
+	cycle:							false;
+	padding:						10;
+    spacing:						10;
+    columns:						5;
+}
+
+#inputbar
+{
+	background-color:				@background;
+	text-color:						@foreground;
+	children:						[ entry ];
+}
+
+#entry
+{
+	background-color:				@background;
+	text-color:						@foreground;
+	expand:							true;
+	padding:						10px;
+}
+
+#element
+{
+	background-color:				@background;
+	text-color:						@foreground;
+    orientation:					vertical;
+	padding:						25px;
+}
+
+element-icon
+{
+    size:							38px;
+}
+
+element-text
+{
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+}
+
+#element.normal.normal
+{
+	background-color:				@background;
+	text-color:						@foreground;
+}
+
+#element.normal.urgent
+{
+	background-color:				@urgent-background;
+	text-color:						@urgent-foreground;
+}
+
+#element.normal.active
+{
+	background-color:				@active-background;
+	text-color:						@foreground;
+}
+
+#element.selected.normal
+{
+	background-color:				@selected-background;
+	text-color:						@foreground;
+}
+
+#element.selected.urgent
+{
+	background-color:				@selected-urgent-background;
+	text-color:						@foreground;
+}
+
+#element.selected.active
+{
+	background-color:				@selected-active-background;
+	text-color:						@foreground;
+}
+
+#element.alternate.normal
+{
+	background-color:				@background;
+	text-color:						@foreground;
+}
+
+#element.alternate.urgent
+{
+	background-color:				@urgent-background;
+	text-color:						@foreground;
+}
+
+#element.alternate.active
+{
+	background-color:				@active-background;
+	text-color:						@foreground;
+}

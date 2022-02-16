@@ -1,0 +1,114 @@
+dynvariables:
+    d_conf: echo ${XDG_CONFIG_HOME:-~/.config}
+    d_data: echo ${XDG_DATA_HOME:-~/.local/share}
+    d_cache: echo ${XDG_CACHE_HOME:-~/.cache}
+config:
+    backup: true
+    banner: false
+    create: true
+    dotpath: dots
+    keepdot: true
+    link_dotfile_default: link
+    link_on_import: link
+    longkey: false
+variables:
+    distro: arch
+    editor: neovim
+    terminal: kitty
+    colorscheme: catppuccin
+    browser: firefox
+    multiplexer: tmux
+    shell: bash
+actions:
+    confirm: read {0} "[y/N]" -n 1 -r [[ $REPLY =~ ^[Yy]$ ]] && {1}
+dotfiles:
+    f_prettierrc.json:
+        src: .prettierrc.json
+        dst: ~/.prettierrc.json
+    f_vimrc:
+        src: .vimrc
+        dst: ~/.vimrc
+        chmod: '755'
+    f_gitconfig:
+        src: .gitconfig
+        dst: ~/.gitconfig
+        chmod: '755'
+    f_shell_aliases:
+        src: .shell_aliases
+        dst: ~/.shell_aliases
+        chmod: '755'
+    f_xresources:
+        src: .xresources
+        dst: ~/.xresources
+    f_tmux.conf:
+        src: .tmux.conf
+        dst: ~/.tmux.conf
+    f_profile:
+        src: .profile
+        dst: ~/.profile
+        chmod: '755'
+    f_inputrc:
+        src: .inputrc
+        dst: ~/.inputrc
+        chmod: '755'
+    f_bashrc:
+        src: .bashrc
+        dst: ~/.bashrc
+        chmod: '755'
+    f_xinitrc:
+        src: .xinitrc
+        dst: ~/.xinitrc
+    d_cava:
+        src: .config/cava
+        dst: ~/.config/cava
+    d_neofetch:
+        src: .config/neofetch
+        dst: ~/.config/neofetch
+    d_miniprompt:
+        src: .config/miniprompt
+        dst: ~/.config/miniprompt
+    d_kitty:
+        src: .config/kitty
+        dst: ~/.config/kitty
+    d_alacritty:
+        src: .config/alacritty
+        dst: ~/.config/alacritty
+    d_btop:
+        src: .config/btop
+        dst: ~/.config/btop
+    d_zathura:
+        src: .config/zathura
+        dst: ~/.config/zathura
+    d_htop:
+        src: .config/htop
+        dst: ~/.config/htop
+        chmod: '700'
+    d_efm-langserver:
+        src: .config/efm-langserver
+        dst: ~/.config/efm-langserver
+    d_rofi:
+        src: .config/rofi
+        dst: ~/.config/rofi
+profiles:
+    TUF5758:
+        dotfiles:
+            - f_prettierrc.json
+            - f_vimrc
+            - f_gitconfig
+            - f_shell_aliases
+            - f_xresources
+            - f_tmux.conf
+            - f_profile
+            - f_inputrc
+            - f_bashrc
+            - f_xinitrc
+            - d_cava
+            - d_neofetch
+            - d_miniprompt
+            - d_kitty
+            - d_alacritty
+            - d_btop
+            - d_zathura
+            - d_htop
+            - d_efm-langserver
+            - d_rofi

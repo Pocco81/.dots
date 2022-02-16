@@ -1,0 +1,281 @@
+#!/bin/bash
+# vim:ft=sh
+# =============================================================================
+# GitHub & Git
+# =============================================================================
+
+#-------------------=== Git ===-------------------------------
+alias gt='git'
+alias 1tree='git log --all --decorate --oneline --graph'
+alias 2tree='git log --all --decorate --graph'
+
+alias ggs="git status"
+alias ggch="git checkout"
+alias ggpc="git push origin $(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
+alias gta="git add -A"
+alias gtps="git push origin"
+alias gtpl="git pull origin"
+alias gtc="git commit -am"
+
+
+alias ggremote="git remote -v"  # check all remotes
+alias ggbranch="git branch -v"  # check all branches
+
+#-------------------=== YADM ===-------------------------------
+alias yad="yadm"
+
+#-------------------=== Xclip ===-------------------------------
+alias 'c=xclip' #copy
+alias 'cc=xclip -selection clipboard' #copy to clipboard
+alias 'v=xclip -o' #paste
+
+#-------------------=== Neofetch ===-------------------------------
+alias nfetch='neofetch --ascii --source $HOME/.config/neofetch/logos/arch_ascii.txt'
+
+#-------------------=== Utilities ===-------------------------------
+
+# General
+
+alias ctrm='update-alternatives --config x-terminal-emulator'
+alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS'
+alias gksudo='gksu'
+alias sctrm='sudo update-alternatives --config x-terminal-emulator'
+alias dtct_key="xev -event keyboard"
+alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
+alias eco='echo'
+alias rm_crash='echo -e "\nThe following crashes were found and will now be removed:"; ls -l /var/crash/; sleep 1; sudo rm /var/crash/* && echo -e "\nMessage (OK): Succesfully cleared crashes!\nExit Status: $?" || echo -e "\nMessage (FAILED): Nothing removed"'
+
+# changing cursor shape
+
+alias line='echo -e "\033[5 q"'         #blinking pipe bar
+alias nbline='echo -e "\033[6 q"'       #not blinking pipe bar
+alias block='echo -e "\033[1 q"'        #blinking block
+alias nbblock='echo -e "\033[2 q"'      #not blinking block
+alias uscore='echo -e "\033[3 q"'       #blinking underscore
+alias nbuscore='echo -e "\033[4 q"'     #not blinking underscore
+
+#-------------------=== nums info ===-------------------------------
+# 1 is the blinky block cursor
+# 2 is the default (non-blinky) block cursor
+# 3 is blinky underscore
+# 4 fixed underscore
+# 5 pipe bar (blinking)
+# 6 fixed pipe bar
+
+
+#-------------------=== Python ===-------------------------------
+alias pthn="python3.8"
+
+#-------------------=== Go ===-----------------------------------
+alias goi="go mod init test"
+
+#-------------------=== Java ===-------------------------------
+# visit this links in case you want to install java:
+#   https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-18-04/
+
+alias cjava='update-alternatives --config java' #change java version
+alias scjava='sudo update-alternatives --config java' #change java version
+
+#-------------------=== aliases ===-------------------------------
+#terminal aliases
+#change default terminal
+
+#-------------------=== cd(s) ===-------------------------------
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias ........="cd ../../../../../../.."
+alias j="zoxide"
+alias c="cd"
+#date formats
+alias simple_date='date +"%d-%m-%y"'
+
+
+#-------------------=== clear ===-------------------------------
+alias cl="clear"
+alias cls="clear"
+alias rlcea="clear"
+alias cle="clear"
+alias ecla="clear"
+alias rclear="clear"
+alias lscelar="clear"
+alias tre="clear"
+alias ceear="clear"
+alias celr="clear"
+alias eclar="clear"
+alias earl="clear"
+alias clsad="clear"
+alias ear="clear"
+alias sclear="clear"
+alias ealr="clear"
+alias lsclear="clear"
+alias cearlc="clear"
+alias earlcea="clear"
+alias clerr="clear"
+alias rclea="clear"
+alias lcas="clear"
+alias clearcd="clear"
+alias ckear="clear"
+alias cela="clear"
+alias earlc="clear"
+alias clearlce="clear"
+alias lear="clear"
+alias caelr="clear"
+alias lcea="clear"
+alias rclea="clear"
+alias caler="clear"
+alias ceaar="clear"
+alias slcea="clear"
+alias cealr="clear"
+alias elar="clear"
+alias earls="clear"
+alias cclear="clear"
+alias clera="clear"
+alias cleraa="clear"
+alias clearra="clear"
+alias claer="clear"
+alias ckelar="clear"
+alias clrea="clear"
+alias clra="clear"
+alias celar="clear"
+alias celalr="clear"
+alias cear="clear"
+alias clea="clear"
+alias cls="clear; ls"
+alias cearl="clear"
+alias cler="clear"
+alias CLEAR="clear"
+alias cleer="clear"
+alias cearlce="clear"
+alias clearr="clear"
+alias lcear="clear"
+alias cealrc="clear"
+alias clar="clear"
+alias cearls="clear"
+
+alias q="exit"
+alias ks="ls"
+alias LS="ls"
+alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
+alias 2getip="hostname -I | awk '{print $1}'"
+alias vom="vim"
+alias co="cd out/; lh; cd .."
+alias hl="lh"
+alias pww="pwd"
+alias getfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+alias getfanmode="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+alias gfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+
+# fan modes:
+#    + 2 = silent
+#    + 0 = balance
+#    + 1 = turbo
+# And some for commonly used variations of ls (and typos):
+alias ll="ls -l"
+alias lo="ls -o"
+alias lh="ls -lha"
+alias la="ls -la"
+alias sl="ls"
+alias l='ls -CF'
+alias s="ls"
+
+# This is GOLD for finding out what is taking so much space on your drives!
+alias diskspace="du -S | sort -n -r |more"
+
+# Command line mplayer movie watching for the win.
+#alias mp="mplayer -fs"
+
+# Show me the size (sorted) of only the folders in this directory
+alias dicts="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
+
+# =============================================================================
+# Terminal General
+# =============================================================================
+alias so='source'
+# alias thisd='xdg-open .'    # open current directory in file explorer
+alias tuf_info='sudo dmidecode | grep "BIOS Inf\|Board Inf" -A 3'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias tmp="cd /tmp"
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# =============================================================================
+# LUA
+# =============================================================================
+alias lau="lua"
+alias ual="lua"
+alias aul="lua"
+alias wlua="rlwrap lua"
+alias xampp='gksu /opt/lampp/manager-linux-x64.run'
+# alias mp='mvn package'
+alias wq='wmctrl -r 'Alacritty' -b toggle,fullscreen'
+
+# =============================================================================
+# VIEWING & EDITING FILES
+# =============================================================================
+
+#-------------------=== rust-bat ===-------------------------------
+alias bca='batcat'
+
+#-------------------=== Terminal Editors ===-------------------------------
+# alias nv='/usr/local/bin/nvim.appimage'
+alias e='nvim'
+# alias test_echo='echo $@ > test.txt'
+
+#-------------------=== Exa ===-------------------------------
+alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'
+alias ffe='fe'
+alias ef='fe'
+alias f='fe'
+alias fl='exa -F'
+
+#-------------------=== w/ Vim ===-------------------------------
+
+# install with:
+# sudo snap install --edge nvim --classic
+alias ef_systemd='sudo vim /etc/systemd/system.conf'
+alias ef_kitty='vim ~/.config/kitty/kitty.conf'
+alias ef_bash='vim ~/.bashrc'
+alias ef_vim='vim ~/.vimrc'
+alias ef_nvim='vim ~/.config/nvim/init.vim'
+alias ef_ss='vim ~/.config/starship.toml'
+alias ef_sa='vim ~/.shell_aliases'
+
+#-------------------=== w/ Nvim ===-------------------------------
+
+alias efn_systemd='sudo nvim /etc/systemd/system.conf'
+alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
+alias efn_sh='nvim ~/.bashrc'
+alias efn_vim='nvim ~/.vimrc'
+alias efn_nv='nvim ~/.config/nvim/init.lua'
+alias efn_sa='nvim ~/.shell_aliases'
+alias efn_tm='nvim ~/.tmux.conf'
+alias efn_ala='nvim ~/.config/alacritty/alacritty.yml'
+alias efn_sa='nvim ~/.shell_aliases'
+# alias efn_ss='nvim ~/.config/starship.toml'
+
+#-------------------=== Cat-ting ===-------------------------------
+alias ct_bash="cat ~/.bashrc"
+alias ct_vim="cat ~/.vimrc"
+alias ct_kitty="cat ~/.config/kitty/kitty.conf"
+alias ct_nvim='cat ~/.config/kitty/kitty.conf'
+
+
+#-------------------=== Kitty ===-------------------------------
+alias icat="kitty +kitten icat"
+
+
+#-------------------=== Others ===-------------------------------
+alias load="kill -USR1 $(pidof st)"
+alias use="xrdb merge"
+alias appit="/usr/local/bin/appimagetool-x86_64.AppImage"
+alias pls="sudo"
+alias clr="clear"
+alias cw="pwd | cc"

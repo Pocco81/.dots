@@ -1,0 +1,100 @@
+/* -*-css-*- vim: set ft=css: */
+
+configuration {
+  display-combi: "system:";
+  display-run: "run:";
+  display-drun: "drun:";
+  display-window: "workspaces:";
+  window-format: "{w}​  {t}";
+  show-icons: true;
+  icon-theme: "Papirus-Dark";
+  lines: 10;
+  columns: 1;
+}
+
+* {
+  red:        #cc6666;
+  green:      #b5bd68;
+  yellow:     #f0c674;
+  blue:       #81a2be;
+  magenta:    #b294bb;
+  cyan:       #8abeb7;
+  emphasis:   #373b41;
+  text:       #dfdfdf;
+  text-alt:   #c5c8c6;
+  fg:         #abb2bf;
+  bg:         #17191a;
+
+  background-color: transparent;
+  font: "SF Pro Display Regular 13.5";
+  text-color: @text;
+}
+
+window {
+  width:            800px;
+  border-radius:    10px;
+  border:           1;
+  border-color:     @emphasis;
+  background-color: #1d1f21F2;
+  location:         center;
+}
+
+mainbox {
+  padding: 2% 2%;
+}
+
+inputbar {
+  margin: 0px 0px 2px 0px;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+  text-color: @blue;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  text-color: @text-alt;
+}
+
+
+listview {
+  padding: 10px 0px 10px 0px;
+  spacing: 0.3em;
+  dynamic: true;
+  scrollbar: false;
+}
+
+element {
+  padding: 3px;
+  text-color: @text-alt;
+  highlight: bold #abdefc;
+  border-radius: 10px;
+}
+
+element selected {
+  background-color: @emphasis;
+  text-color: @text;
+}
+
+element urgent, element selected urgent {
+  text-color: #abdefc;
+}
+
+element active, element selected active {
+  text-color: @text;
+}
+
+message {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @emphasis;
+  border: 1px;
+  border-color: @cyan;
+}
+
+button selected {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @emphasis;
+}

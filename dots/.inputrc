@@ -1,0 +1,14 @@
+
+# Ctrl-Delete: delete next word
+"\e[3;5~": shell-kill-word
+
+# Ctrl-Backspace
+"\C-H": shell-backward-kill-word
+
+# search backward and forward (PageUp/PageDown)
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+# search backward and forward (Up/Down)
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
