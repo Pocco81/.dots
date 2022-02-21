@@ -25,3 +25,8 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -e "$HOME/.local/bin/exe" ] ; then
+    PATH="$HOME/.local/bin/exe:$PATH"
+fi

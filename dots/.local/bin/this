@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [[ -n "$1" ]]; then
+	case $1 in
+		d)               # Default case: No more options, so break out of the loop.
+			xdg-open .
+			exit;
+			;;
+		ip)
+			ip route get 1.2.3.4 | awk '{print $7}'
+			exit;
+			;;
+		sys)
+			sudo dmidecode
+			exit;
+			;;
+	esac
+else
+	echo -e "This script needs one argument"
+fi

@@ -1,0 +1,63 @@
+#!/bin/bash
+
+this_script=$(basename "$0")
+script_help=$( cat << EOF
+
+This script opens predefined file nvim.
+
+Usages:
+#0: ${this_script} <arg/flag>
+Arguments:
+	kt				~/.config/kitty/kitty.conf'
+	sh				~/.bashrc'
+	nv				~/.config/nvim/init.lua'
+	sa				~/.shell_aliases'
+	tm				~/.tmux.conf'
+	al				~/.config/alacritty/alacritty.yml'
+	sa				~/.shell_aliases'
+	aw				~/.config/awesome/rc.lua
+
+Flags:
+	-h,--help		Show this help message.
+EOF
+)
+
+function assert_file () {
+
+	file=$1
+
+	if [[ "$file" == "tm" ]]; then
+		nvim $HOME/.tmux.conf
+	elif [[ "$file" == "kt" ]]; then
+		nvim $HOME/.config/kitty/kitty.conf
+	elif [[ "$file" == "sh" ]]; then
+		nvim $HOME/.bashrc
+	elif [[ "$file" == "nv" ]]; then
+		nvim $HOME/.config/nvim/init.lua
+	elif [[ "$file" == "sa" ]]; then
+		nvim $HOME/.shell_aliases
+	elif [[ "$file" == "al" ]]; then
+		nvim $HOME/.config/alacritty/alacritty.yml
+	elif [[ "$file" == "aw" ]]; then
+		nvim $HOME/.config/awesome/rc.lua
+	elif [[ "$file" == "mn" ]]; then
+		nvim $HOME/.config/miniprompt/conf.toml
+	else
+		echo -e "Error: file not recognized.\nType '$this_script -h' or '$this_script --help' for help"
+	fi
+
+}
+
+if [[ -n "$1" ]]; then
+	case $1 in
+		-h|-\?|--help)
+			echo "$script_help"
+			exit 0
+			;;
+		*)               # Default case: No more options, so break out of the loop.
+			assert_file "$1"
+			;;
+	esac
+else
+    echo -e "This script needs at least one argument to work.\nType '$this_script -h' or '$this_script --help' for help "
+fi

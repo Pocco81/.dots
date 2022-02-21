@@ -9,32 +9,113 @@ case $- in
 esac
 
 
+# -------- Settings
+
+# ---- All
+export HISTFILESIZE=20000
+export HISTSIZE=10000
+export HISTIGNORE="&:ls:[bf]g:exit"
+export HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01' # colored GCC warnings and errors
+shopt -s cmdhist
+shopt -s cdspell # correct minor spelling errors in cd
+shopt -s histappend # append to the history file, don't overwrite it
+
+# ---- TTYs
+# everything inside here will run whenever a tty window is opened
+# reference: https://askubuntu.com/questions/147462/how-can-i-change-the-tty-colors
+if [ "$TERM" = "linux" ]; then
+    setterm -foreground green -store
+fi
+
+# ---- Cursor
+# set default cursor to blinking pipe
+printf '%b' '\033[5 q'
+
+# \033[5 q			#blinking pipe bar
+# \033[6 q			#not blinking pipe bar
+# \033[1 q			#blinking block
+# \033[2 q			#not blinking block
+# \033[3 q			#blinking underscore
+# \033[4 q			#not blinking underscore
+
+# ---- Prompt
+alias mp="source miniprompt"
+if [ -e "$(which miniprompt)" ]; then
+	mp
+fi
+
+# ---- Editor
+if [ -e "$(which vim)" ]; then
+	export EDITOR='vim'
+	export VISUAL='vim'
+fi
+
+# ---- Terminal
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then
+	# source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"
+	# source <(cat $KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash)
+	source <(kitty + complete setup bash)
+fi
+
+
+# -------- $PATH Additions
+declare -A path_additions=(
+    ["node"]=""
+    ["cargo"]=""
+    ["go"]=""
+    ["java"]=""
+)
+
+
+
+_MY_JAVA="$(which java)"
+if [ -e "${_MY_JAVA}" ]; then
+    export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
+    export PATH=$PATH:$JAVA_HOME/bin
+fi
+unset _MY_JAVA
+
+_MY_NODE="$(which node)"
+if [ -e "${_MY_NODE}" ]; then
+	export NODE_PATH="$HOME/.npm-packages/bin:$HOME/.node_modules/bin"
+    export PATH=$PATH:$NODE_PATH
+fi
+unset _MY_NODE
+
+_MY_CARGO="$(which cargo)"
+if [ -e "${_MY_CARGO}" ]; then
+	export CARGO_BIN_PATH="$HOME/.cargo/bin"
+    export PATH=$PATH:$CARGO_BIN_PATH
+fi
+unset _MY_CARGO
+
+_MY_GOLANG="$(which go)"
+if [ -e "${_MY_GOLANG}" ]; then
+	export GOPATH="$HOME/go"
+	export GOBIN="$GOPATH/bin"
+	export PATH=$PATH:$GOBIN
+fi
+unset _MY_GOLANG
+
+
+
+
 #-------------------=== Dotdrop ===-------------------------------
 alias de="dotdrop --cfg=$HOME/.dots/config.yaml"
 
 # =============================================================================
 # MiniPrompt
 # =============================================================================
-
-#-------------------=== aliases ===-------------------------------
-alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt'
-alias odf='source /usr/local/bin/MiniPrompt*/scripts/on_da_fly.sh'
-
-
-# load xresources file
-# xrdb merge ~/xresources
-
 #-------------------=== vars ===-------------------------------
 MINIPROMPT_ENABLED=false
-
-#-------------------=== resources ===-------------------------------
 
 # >>> MiniPrompt initialize >>>
 if [[ "$MINIPROMPT_ENABLED" == "true" ]]; then
     # check if current shell is interactive
     # if .bashrc doesn't do this by default, uncomment the line below and comment the line that only says source /usr/local/bin/MiniPrompt*/mini_prompt.sh
     # [[ $- == *i* ]] && source /usr/local/bin/MiniPrompt*/mini_prompt.sh || echo -e "You are currently not in an interactive shell, thus MiniPrompt can't load"
-    
+
     # source the files
     source /usr/local/bin/MiniPrompt*/mini_prompt
     source /usr/local/bin/MiniPrompt*/scripts/extras.sh
@@ -64,27 +145,6 @@ else
 fi
 # <<< MiniPrompt initialize <<<
 
-alias sync_miniprompt='sudo rm -R -f /usr/local/bin/MiniPrompt; sudo rsync -av /home/sebas5758/code/github_p/MiniPrompt/ /usr/local/bin/MiniPrompt'
-
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-# HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-# shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# HISTSIZE=1000
-# HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -179,15 +239,11 @@ function set-title() {
 #    alias egrep='egrep --color=auto'
 #fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.shell_aliases ]; then
     source ~/.shell_aliases
 fi
@@ -203,16 +259,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# -------- Others
 
-
-# =============================================================================
-# C-NET.ORG
-# =============================================================================
-
-#This for easy access on https://paste.c-net.org/
-
-function pastebin()
-{
+# ---- pastebin
+# this for easy access on https://paste.c-net.org/
+function pastebin() {
     local url='https://paste.c-net.org/'
     if (( $# )); then
         local file
@@ -226,8 +277,7 @@ function pastebin()
         curl -s --data-binary @- "$url"
     fi
 }
-function pasteget()
-{
+function pasteget() {
     local url='https://paste.c-net.org/'
     if (( $# )); then
         local arg
@@ -241,111 +291,3 @@ function pasteget()
         done
     fi
 }
-
-
-# ----------------------------=== My Stuff ===--------------------------
-
-_MY_KITTY="$(which kitty)"
-if [ -e "${_MY_KITTY}" ]; then
-	source <(kitty + complete setup bash)
-fi
-unset _MY_KITTY
-
-_MY_JAVA="$(which java)"
-if [ -e "${_MY_JAVA}" ]; then
-    export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
-    export PATH=$PATH:$JAVA_HOME/bin
-fi
-unset _MY_JAVA
-
-_MY_JDTLS="$HOME/Downloads/eclipse.jdt.ls"
-if [ -e "${_MY_JDTLS}" ]; then
-    export PATH=$PATH:$_MY_JDTLS
-fi
-unset _MY_JDTLS
-
-_MY_NODE="$(which node)"
-if [ -e "${_MY_NODE}" ]; then
-	export NODE_PATH="$HOME/.npm-packages/bin:$HOME/.node_modules/bin"
-    export PATH=$PATH:$NODE_PATH
-fi
-unset _MY_NODE
-
-_MY_CARGO="$(which cargo)"
-if [ -e "${_MY_CARGO}" ]; then
-	export CARGO_BIN_PATH="$HOME/.cargo/bin"
-    export PATH=$PATH:$CARGO_BIN_PATH
-fi
-unset _MY_CARGO
-
-_MY_GOLANG="$(which go)"
-if [ -e "${_MY_GOLANG}" ]; then
-	export GOPATH="$HOME/go"
-	export GOBIN="$GOPATH/bin"
-	export PATH=$PATH:$GOBIN
-fi
-unset _MY_GOLANG
-
-local_bin="$HOME/.local/bin"
-
-export PATH=$PATH:$local_bin
-
-
-_MY_VIM="$(which vim)"
-if [ -e "${_MY_VIM}" ]; then
-	export EDITOR='vim'
-	export VISUAL='vim'
-fi
-unset _MY_VIM
-
-
-#-------------------=== others ===-------------------------------
-export HISTFILESIZE=20000
-export HISTSIZE=10000
-shopt -s cmdhist
-export HISTIGNORE="&:ls:[bf]g:exit"
-
-#everything inside here will run whenever a tty window is opened
-if [ "$TERM" = "linux" ]; then
-    setterm -foreground green -store
-fi
-#references:
-#https://askubuntu.com/questions/147462/how-can-i-change-the-tty-colors
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/sebas5758/.sdkman"
-[[ -s "/home/sebas5758/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sebas5758/.sdkman/bin/sdkman-init.sh"
-
-# luaver
-alias lv='luaver'
-alias llv='[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver; [ -s ~/.luaver/completions/luaver.bash ] && . ~/.luaver/completions/luaver.bash'
-
-alias luamake=/home/sebas5758/.config/lua-language-server/3rd/luamake/luamake
-
-
-
-
-# ----------- Cursor
-# set default cursor to blinking pipe
-printf '%b' '\033[5 q'
-
-# \033[5 q			#blinking pipe bar
-# \033[6 q			#not blinking pipe bar
-# \033[1 q			#blinking block
-# \033[2 q			#not blinking block
-# \033[3 q			#blinking underscore
-# \033[4 q			#not blinking underscore
-# alias mp="source /usr/lib/node_modules/miniprompt/miniprompt"
-# mp
-
-# alias mp="source /home/pocco81/code/github_p/MiniPrompt/miniprompt"
-alias mp="source miniprompt"
-mp
-# PS1='$(printf "%*s\r%s" $(( COLUMNS-1 )) "[$(git branch 2>/dev/null | grep '^*' | sed s/..//)] $(date +%H:%M:%S)" "heipei@wavefront:$PWD$ ")'
-
-# eval "$(starship init bash)"
-
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION
