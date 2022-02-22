@@ -8,7 +8,7 @@ esac
 
 # ---- All
 export HISTFILESIZE=20000
-export HISTSIZE=10000
+export HISTSIZE=5000
 export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01' # colored GCC warnings and errors
@@ -101,9 +101,11 @@ if [ -e "$(which vim)" ]; then
 fi
 
 # ---- Terminal
-if [ -e "$(which kitty)" ]; then
-	source <(kitty + complete setup bash)
-fi
+# INFO: this adds a couple of milliseconds to the shell's startup time
+# measured with: time bash -i -c "echo -n" (https://superuser.com/questions/606643/how-to-benchmark-bashrc-zshrc-and-prompt-rendering-time)
+# if [ -e "$(which kitty)" ]; then
+# 	source <(kitty + complete setup bash)
+# fi
 
 # -------- $PATH Additions
 declare -A path_additions=(
