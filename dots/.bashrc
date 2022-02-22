@@ -58,45 +58,18 @@ fi
 
 # -------- $PATH Additions
 declare -A path_additions=(
-    ["node"]=""
-    ["cargo"]=""
-    ["go"]=""
-    ["java"]=""
+    ["node"]="$HOME/.npm-packages/bin:$HOME/.node_modules/bin"
+    ["cargo"]="$HOME/.cargo/bin"
+    ["go"]="$HOME/go/bin"
+    # ["java"]="$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))"
 )
 
-_MY_JAVA="$(which java)"
-if [ -e "${_MY_JAVA}" ]; then
-    export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
-    export PATH=$PATH:$JAVA_HOME/bin
-fi
-unset _MY_JAVA
+for program in "${!path_additions[@]}"; do
+	if [ -e "$(which "$program")" ]; then
+		export PATH=$PATH:${path_additions[$program]}
+	fi
+done
 
-_MY_NODE="$(which node)"
-if [ -e "${_MY_NODE}" ]; then
-	export NODE_PATH="$HOME/.npm-packages/bin:$HOME/.node_modules/bin"
-    export PATH=$PATH:$NODE_PATH
-fi
-unset _MY_NODE
-
-_MY_CARGO="$(which cargo)"
-if [ -e "${_MY_CARGO}" ]; then
-	export CARGO_BIN_PATH="$HOME/.cargo/bin"
-    export PATH=$PATH:$CARGO_BIN_PATH
-fi
-unset _MY_CARGO
-
-_MY_GOLANG="$(which go)"
-if [ -e "${_MY_GOLANG}" ]; then
-	export GOPATH="$HOME/go"
-	export GOBIN="$GOPATH/bin"
-	export PATH=$PATH:$GOBIN
-fi
-unset _MY_GOLANG
-
-
-
-
-#-------------------=== Dotdrop ===-------------------------------
 alias de="dotdrop --cfg=$HOME/.dots/config.yaml"
 
 # =============================================================================
