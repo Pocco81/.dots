@@ -52,12 +52,9 @@ if [ -e "$(which vim)" ]; then
 fi
 
 # ---- Terminal
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then
-	# source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"
-	# source <(cat $KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash)
+if [ -e "$(which kitty)" ]; then
 	source <(kitty + complete setup bash)
 fi
-
 
 # -------- $PATH Additions
 declare -A path_additions=(
@@ -66,8 +63,6 @@ declare -A path_additions=(
     ["go"]=""
     ["java"]=""
 )
-
-
 
 _MY_JAVA="$(which java)"
 if [ -e "${_MY_JAVA}" ]; then
