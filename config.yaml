@@ -92,6 +92,9 @@ dotfiles:
   d_exe:
     src: .local/bin
     dst: ~/.local/bin/exe
+  d_nvim:
+    src: .config/nvim
+    dst: ~/.config/nvim
 profiles:
   TUF5758:
     dotfiles:
@@ -116,3 +119,4 @@ profiles:
     - d_efm-langserver
     - d_rofi
     - d_exe
+    - d_nvim
