@@ -1,1 +1,2 @@
 dots/.config/nvim/plugin/
+*.log
