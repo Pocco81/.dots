@@ -10,9 +10,6 @@ local function get_packer()
 		vim.notify("Error: Packer is missing! Installing it...", vim.log.levels.WARN)
 		vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim --depth 20 " .. install_path)
 
-		vim.cmd("packadd packer.nvim")
-		present, packer = pcall(require, "packer")
-
 		local present, packer = load_packer()
 		if present then
 			vim.notify("Success: Packer was installed", vim.log.levels.INFO)
@@ -42,7 +39,9 @@ packer.init({
 	},
 	auto_clean = true,
 	compile_on_sync = true,
-	--    auto_reload_compiled = true
+	-- compile_path = require("packer.util").join_paths(vim.fn.stdpath("data"), "site", "pack", "packer_compiled.lua"),
+	-- compile_path = "/home/pocco81/.local/share/nvim/site/pack/packer_compiled.lua"
+	-- compile_path = require("packer.util").join_paths(vim.fn.stdpath('config'), 'plugins', 'packer_compiled.lua'),
 })
 
 packer.startup(function(use)
@@ -53,17 +52,17 @@ packer.startup(function(use)
 	})
 
 	use({ "nathom/filetype.nvim" })
+
 	use("wbthomason/packer.nvim") -- Package manager
 
 	use({
+		"nvim-lua/plenary.nvim",
+		event = "BufRead",
+	})
+	use({
 		"nvim-lua/popup.nvim",
 		after = "plenary.nvim",
-		requires = { "nvim-lua/plenary.nvim" }
-	})
-
-	use({
-		"nvim-lua/plenary.nvim",
-		event = "BufRead"
+		requires = { "nvim-lua/plenary.nvim" },
 	})
 
 	------------ UI
@@ -89,7 +88,7 @@ packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 		branch = "dev",
-		after = "bufferline.nvim", -- becuase catppuccin overrides highlights and not the other way around
+		after = "bufferline.nvim",
 		config = function()
 			require("plugins.ui.catppuccin")
 		end,
@@ -137,7 +136,7 @@ packer.startup(function(use)
 		cmd = "NvimTreeToggle",
 		config = function()
 			require("plugins.ui.tree")
-		end
+		end,
 	})
 
 	use({
@@ -145,7 +144,7 @@ packer.startup(function(use)
 		event = "BufWinEnter",
 		setup = function()
 			require("plugins.ui.dashboard")
-		end
+		end,
 	})
 
 	use({
@@ -153,7 +152,7 @@ packer.startup(function(use)
 		cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
 		config = function()
 			require("plugins.ui.twilight")
-		end
+		end,
 	})
 
 	------------ LSP
@@ -166,7 +165,7 @@ packer.startup(function(use)
 		},
 		config = function()
 			require("plugins.lsp.lspconfig")
-		end
+		end,
 	})
 
 	use({
@@ -174,7 +173,7 @@ packer.startup(function(use)
 		event = "BufRead",
 		config = function()
 			require("plugins.lsp.lspkind")
-		end
+		end,
 	})
 
 	use({
@@ -182,7 +181,7 @@ packer.startup(function(use)
 		event = "BufRead",
 		config = function()
 			require("plugins.lsp.lspsaga")
-		end
+		end,
 	})
 
 	use({
@@ -190,7 +189,7 @@ packer.startup(function(use)
 		after = "nvim-lsp-installer",
 		config = function()
 			require("plugins.lsp.lspsignature")
-		end
+		end,
 	})
 
 	------------ Tools
@@ -199,7 +198,7 @@ packer.startup(function(use)
 		requires = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("plugins.tools.luasnip")
-		end
+		end,
 	})
 
 	use({
@@ -207,7 +206,7 @@ packer.startup(function(use)
 		event = "InsertEnter",
 		config = function()
 			require("plugins.tools.cmp")
-		end
+		end,
 	})
 
 	use({
@@ -274,39 +273,39 @@ packer.startup(function(use)
 		after = "plenary.nvim",
 		config = function()
 			require("plugins.tools.gitsigns")
-		end
+		end,
 	})
 
-	use({
-		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
-		config = function()
-			require("plugins.tools.telescope")
-		end
-	})
-
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-		after = "telescope.nvim",
-		config = function()
-			require("telescope").load_extension("fzf")
-		end
-	})
+-- 	use({
+-- 		"nvim-telescope/telescope.nvim",
+-- 		cmd = "Telescope",
+-- 		config = function()
+-- 			require("plugins.tools.telescope")
+-- 		end,
+-- 	})
+--
+-- 	use({
+-- 		"nvim-telescope/telescope-fzf-native.nvim",
+-- 		run = "make",
+-- 		after = "telescope.nvim",
+-- 		config = function()
+-- 			require("telescope").load_extension("fzf")
+-- 		end,
+-- 	})
 
 	use({
 		"Asheq/close-buffers.vim",
-		event = "BufRead"
+		event = "BufRead",
 	})
 
 	use({
 		"reedes/vim-pencil",
-		cmd = { "Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil" }
+		cmd = { "Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil" },
 	})
 
 	use({
 		"mg979/vim-visual-multi",
-		event = "CursorMoved"
+		event = "CursorMoved",
 	})
 
 	------------ Utils
@@ -316,7 +315,7 @@ packer.startup(function(use)
 		event = "BufRead",
 		config = function()
 			require("plugins.utils.autosave")
-		end
+		end,
 	})
 
 	use({
@@ -325,7 +324,7 @@ packer.startup(function(use)
 		commit = "0d300e66fb553ad8c0bc5eaaf0f14c2dcba374e7",
 		config = function()
 			require("plugins.utils.bufresize")
-		end
+		end,
 	})
 
 	use({
@@ -333,7 +332,7 @@ packer.startup(function(use)
 		event = "WinScrolled",
 		config = function()
 			require("plugins.utils.neoscroll")
-		end
+		end,
 	})
 
 	use({
@@ -342,22 +341,12 @@ packer.startup(function(use)
 		cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus" },
 		config = function()
 			require("plugins.utils.truezen")
-		end
-	})
-
-	use({
-		"Pocco81/HighStr.nvim",
-		branch = "dev",
-		cmd = { "HSHighlight", "HSRmHighlight", "HSImport", "HSExport" },
-		keys = { "<F3>", "<F4>" }, -- custom mappings
-		config = function()
-			require("plugins.utils.highstr")
-		end
+		end,
 	})
 
 	use({
 		"mbbill/undotree",
-		cmd = { "UndotreeToggle" }
+		cmd = { "UndotreeToggle" },
 	})
 
 	use({
@@ -366,7 +355,7 @@ packer.startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			require("plugins.utils.todocomments")
-		end
+		end,
 	})
 
 	use({
@@ -374,41 +363,28 @@ packer.startup(function(use)
 		after = "catppuccin",
 		config = function()
 			require("plugins.utils.trouble")
-		end
+		end,
 	})
 
 	use({
 		"numToStr/Comment.nvim",
-		config = function ()
+		config = function()
 			require("Comment").setup()
-		end
+		end,
 	})
-
-	use("ludovicchabant/vim-gutentags") -- Automatic tags management
 
 	----------------------------=== Extensions ===--------------------------
-	use({
-		"folke/lua-dev.nvim",
-		opt = true,
-		ft = "lua"
-	})
 
 	use({
 		"simrat39/rust-tools.nvim",
 		opt = true,
-		ft = "rust"
-	})
-
-	use({
-		"vim-crystal/vim-crystal",
-		opt = true,
-		ft = "crystal"
+		ft = "rust",
 	})
 
 	use({
 		"fladson/vim-kitty",
 		opt = true,
-		ft = "kitty"
+		ft = "kitty",
 	})
 
 	use({
@@ -417,7 +393,7 @@ packer.startup(function(use)
 		ft = "go",
 		config = function()
 			require("go").setup()
-		end
+		end,
 	})
 
 	use({
@@ -426,12 +402,12 @@ packer.startup(function(use)
 		ft = { "html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
 		config = function()
 			require("plugins.extensions.ts_autotag")
-		end
+		end,
 	})
 
 	use({
 		"editorconfig/editorconfig-vim",
 		opt = true,
-		event = "BufRead"
+		event = "BufRead",
 	})
 end)

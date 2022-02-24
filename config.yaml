@@ -3,7 +3,7 @@ dynvariables:
   d_data: echo ${XDG_DATA_HOME:-~/.local/share}
   d_cache: echo ${XDG_CACHE_HOME:-~/.cache}
 config:
-  backup: false
+  backup: true
   banner: false
   create: true
   dotpath: dots
