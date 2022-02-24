@@ -45,7 +45,9 @@ packer.init({
 })
 
 packer.startup(function(use)
+
 	------------ Core
+
 	use({
 		"lewis6991/impatient.nvim",
 		rocks = "mpack",
@@ -156,6 +158,7 @@ packer.startup(function(use)
 	})
 
 	------------ LSP
+
 	use({
 		"williamboman/nvim-lsp-installer",
 		event = "VimEnter",
@@ -193,6 +196,7 @@ packer.startup(function(use)
 	})
 
 	------------ Tools
+
 	use({
 		"L3MON4D3/LuaSnip",
 		requires = { "rafamadriz/friendly-snippets" },
@@ -309,6 +313,7 @@ packer.startup(function(use)
 	})
 
 	------------ Utils
+
 	use({
 		"Pocco81/AutoSave.nvim",
 		branch = "dev",
